@@ -11,15 +11,20 @@ import { COLORS } from "../styles";
 
 type VariantCardProps = {
   variants: ProductVariant[];
+  onSelectVariant: (index: number) => void;
 };
 
-const VariantCard: React.FC<VariantCardProps> = ({ variants }) => {
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
-    null
+const VariantCard: React.FC<VariantCardProps> = ({
+  variants,
+  onSelectVariant,
+}) => {
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(
+    variants[0]
   );
 
-  const handlePress = (variant: ProductVariant) => {
-    setSelectedVariant(variant);
+  const handlePress = (index: number) => {
+    onSelectVariant(index);
+    setSelectedVariant(variants[index]);
   };
 
   return (
@@ -28,7 +33,7 @@ const VariantCard: React.FC<VariantCardProps> = ({ variants }) => {
         {variants.map((variant, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => handlePress(variant)}
+            onPress={() => handlePress(index)}
             style={[
               styles.card,
               selectedVariant === variant && styles.selectedCard,

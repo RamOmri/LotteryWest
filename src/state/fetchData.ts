@@ -11,11 +11,13 @@ export default function fetchData(): ProductContent[] {
       title: "House number 1",
       variants: [
         {
-          description: "House with no pool.",
+          description:
+            "Welcome to your future home! While it may not have the most square footage or the latest appliances, it's full of character and... potential. It's perfect for those who love a good DIY project (or ten). Bonus: The creaky floorboards will ensure you always know when your in-laws are coming!",
           price: 5000,
         },
         {
-          description: "House with pool.",
+          description:
+            "Introducing the 'Palace of Possibility'! This cozy abode might not have a throne room, but it has a chair in the corner that's pretty comfortable. Forget about a grand ballroom; our dance floor is wherever you decide to put your boombox. With windows that almost all have views and a roof that mostly doesn't leak, you'll feel like royalty in no time. Your kingdom awaits!",
           price: 10000,
         },
       ],
