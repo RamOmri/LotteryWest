@@ -10,7 +10,11 @@ const Stack = createNativeStackNavigator<StackParamList>();
 
 const TabsRouter = () => {
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+      screenOptions={{
+        tabBarIcon: () => null,
+      }}
+    >
       <Tabs.Screen
         options={{ headerShown: false }}
         name="ProductSelection"

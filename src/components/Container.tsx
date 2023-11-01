@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { COLORS } from "../styles";
 
 type ContainerProps = {
@@ -10,6 +10,7 @@ type ContainerProps = {
 const Container = ({ children, style }: ContainerProps) => {
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar />
       <View style={[styles.container, style]}>{children}</View>
     </SafeAreaView>
   );
