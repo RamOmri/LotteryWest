@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Text as RNText, StyleSheet } from "react-native";
-import { COLORS } from "./colors";
+import { COLORS } from "./Colors";
 
 type TextProps = Pick<
   React.ComponentProps<typeof RNText>,

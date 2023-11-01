@@ -1,4 +1,4 @@
 import Text from "./Fonts";
-import { COLORS } from "./colors";
+import { COLORS } from "./Colors";
 
 export { COLORS, Text };
