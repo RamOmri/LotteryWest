@@ -1,27 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Container } from "../components";
+import { Text } from "../styles";
 
 const ProductSelection = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Home Screen!</Text>
-      {/* Add other UI components here */}
-    </View>
+    <Container>
+      <Text fontType="Title">Lottery West Product Selection</Text>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f8f9fa",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-});
 
 export default ProductSelection;

@@ -29,7 +29,8 @@ const Text: FC<TextProps> = ({ style, children, fontType }) => {
 const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: 28,
+    color: COLORS.white,
   },
   text: {
     color: COLORS.white,

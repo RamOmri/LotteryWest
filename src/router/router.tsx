@@ -11,21 +11,30 @@ const Stack = createNativeStackNavigator<StackParamList>();
 const TabsRouter = () => {
   return (
     <Tabs.Navigator>
-      <Tabs.Screen name="ProductSelection" component={ProductSelection} />
+      <Tabs.Screen
+        options={{ headerShown: false }}
+        name="ProductSelection"
+        component={ProductSelection}
+      />
     </Tabs.Navigator>
   );
 };
 
-const HomeRouter = () => {
+function HomeRouter() {
   return (
     <NavigationContainer>
-      <Stack.Screen
-        name="Home"
-        component={TabsRouter}
-        options={{ headerShown: false }}
-      />
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={TabsRouter}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default HomeRouter;
