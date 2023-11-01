@@ -1,12 +1,13 @@
 import { Image } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
-import { useRoute } from "@react-navigation/native";
-import { RouteProp } from "@react-navigation/native";
+import { useRoute, RouteProp } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { StackParamList } from "../router";
 import { Container, VariantCard, Button } from "../components";
 import { Text } from "../styles";
 import { useCart } from "../state";
+import { useNavigation } from "@react-navigation/native";
 
 type ProductVariant = {
   description: string;
@@ -21,6 +22,10 @@ type ProductContent = {
   variants: ProductVariant[];
 };
 
+type ProductScreenNavigationProp = NativeStackNavigationProp<
+  StackParamList,
+  "Product"
+>;
 type ProductScreenRouteProp = RouteProp<StackParamList, "Product">;
 
 const Product: React.FC = () => {
@@ -28,7 +33,10 @@ const Product: React.FC = () => {
   const product = route.params;
   const { addToCart, cart } = useCart();
 
-  const [variant, setVariant] = useState(product.variants[0]);
+  const [variantIndex, setVariantIndex] = useState(0);
+  const { variants } = product;
+
+  const navigation = useNavigation<ProductScreenNavigationProp>();
 
   return (
     <Container>
@@ -46,20 +54,21 @@ const Product: React.FC = () => {
       <View style={styles.section}>
         <VariantCard
           variants={product.variants}
-          onSelectVariant={(index) => setVariant(product.variants[index])}
+          onSelectVariant={(index) => setVariantIndex(index)}
         />
         <Text style={styles.title} fontType="Title">
           {product.title}
         </Text>
         <View style={styles.textContainer}>
-          <Text fontType="Text">{variant.description}</Text>
+          <Text fontType="Text">{variants[variantIndex].description}</Text>
         </View>
       </View>
       <Button
         disabled={cart.some((cartProduct) => cartProduct.id === product.id)}
         label="Purchase"
         onPress={() => {
-          addToCart(product);
+          addToCart({ ...product, variantIndex });
+          navigation.pop();
         }}
       />
     </Container>
