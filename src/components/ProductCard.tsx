@@ -6,9 +6,12 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { ProductContent } from "../screens";
 import { Text } from "../styles";
 import { LinearGradient } from "expo-linear-gradient";
+import { StackParamList } from "../router";
 
 type CardProps = {
   product: ProductContent;
@@ -18,8 +21,18 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
   const firstImage = product.images[0];
   const firstVariant = product.variants[0];
 
+  type ProductScreenNavigationProp = NativeStackNavigationProp<
+    StackParamList,
+    "Product"
+  >;
+  const navigation = useNavigation<ProductScreenNavigationProp>();
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("Product", product);
+      }}
+    >
       <View style={styles.card}>
         <ImageBackground source={firstImage} style={styles.image}>
           <LinearGradient

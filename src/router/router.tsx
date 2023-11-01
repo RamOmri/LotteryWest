@@ -3,7 +3,7 @@ import { StackParamList } from "./types";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ProductSelection } from "../screens";
+import { Product, ProductSelection } from "../screens";
 
 const Tabs = createBottomTabNavigator<TabsParamList>();
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -30,6 +30,11 @@ function HomeRouter() {
         <Stack.Screen
           name="Home"
           component={TabsRouter}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Product"
+          component={Product}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
