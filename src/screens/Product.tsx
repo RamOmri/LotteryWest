@@ -8,6 +8,7 @@ type ProductVariant = {
 
 type ImageSource = React.ComponentProps<typeof Image>["source"];
 type ProductContent = {
+  id: number;
   images: [ImageSource, ImageSource];
   title: string;
   variants: ProductVariant[];
