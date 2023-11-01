@@ -1,3 +1,4 @@
 import Container from "./Container";
+import ProductCard from "./ProductCard";
 
-export { Container };
+export { Container, ProductCard };

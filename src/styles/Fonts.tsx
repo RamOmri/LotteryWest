@@ -6,13 +6,15 @@ type TextProps = Pick<
   React.ComponentProps<typeof RNText>,
   "style" | "children"
 > & {
-  fontType: "Title" | "Text";
+  fontType: "Title" | "SmallTitle" | "Text";
 };
 
 function getStyle(fontType: TextProps["fontType"]) {
   switch (fontType) {
     case "Title":
       return styles.title;
+    case "SmallTitle":
+      return styles.smallTitle;
     case "Text":
       return styles.text;
     default:
@@ -32,9 +34,14 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: COLORS.white,
   },
+  smallTitle: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: COLORS.white,
+  },
   text: {
     color: COLORS.white,
-    fontSize: 14,
+    fontSize: 12,
   },
 });
 

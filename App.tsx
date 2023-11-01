@@ -1,5 +1,11 @@
-import { HomeRouter } from "./src";
+import { HomeRouter, ProductProvider, CartProvider } from "./src";
 
 export default function App() {
-  return <HomeRouter />;
+  return (
+    <ProductProvider>
+      <CartProvider>
+        <HomeRouter />
+      </CartProvider>
+    </ProductProvider>
+  );
 }

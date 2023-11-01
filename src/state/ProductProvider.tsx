@@ -4,23 +4,23 @@ import fetchData from "./fetchData";
 
 const initialState = {
   products: [],
-  loading: false,
+  isLoading: false,
   error: null,
   fetchProducts: () => {},
 };
 
 const DataFetchingContext = createContext<{
   products: ProductContent[];
-  loading: boolean;
+  isLoading: boolean;
   error: any | null;
   fetchProducts: () => void;
 }>(initialState);
 
-const DataFetchingProvider: React.FC<{ children: React.ReactNode }> = ({
+const ProductProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [products, setProducts] = useState<ProductContent[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
   const fetchProducts = async () => {
@@ -44,14 +44,15 @@ const DataFetchingProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <DataFetchingContext.Provider
-      value={{ products, loading, error, fetchProducts }}
+      value={{ products, isLoading, error, fetchProducts }}
     >
       {children}
     </DataFetchingContext.Provider>
   );
 };
 
-// Define a custom hook to consume the data fetching context
-export const useDataFetching = () => {
+const useFetchProducts = () => {
   return useContext(DataFetchingContext);
 };
+
+export { ProductProvider, useFetchProducts };

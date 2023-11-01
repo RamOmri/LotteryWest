@@ -45,8 +45,8 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useCart = () => {
+const useCart = () => {
   return useContext(CartContext);
 };
 
-export default CartProvider;
+export { CartProvider, useCart };
