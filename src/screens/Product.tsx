@@ -4,7 +4,7 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { RouteProp } from "@react-navigation/native";
 import { StackParamList } from "../router";
-import { Container } from "../components";
+import { Container, VariantCard } from "../components";
 import { Text } from "../styles";
 
 type ProductVariant = {
@@ -40,6 +40,7 @@ const Product: React.FC = () => {
         </ScrollView>
       </View>
       <View style={styles.section}>
+        <VariantCard variants={product.variants} />
         <Text style={styles.title} fontType="Title">
           {product.title}
         </Text>
@@ -58,10 +59,12 @@ const styles = StyleSheet.create({
   section: {
     flex: 1,
     marginBottom: 10,
+    width: "100%",
+    alignItems: "center",
   },
   title: {
     marginBottom: 10,
   },
 });
 
-export { ProductContent, Product };
+export { ProductContent, ProductVariant, Product };
